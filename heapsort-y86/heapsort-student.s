@@ -201,8 +201,11 @@ heapsort:
 
 ###
 ### THIS PART TO BE COMPLETED BY THE STUDENT.
-### Delete the halt instruction and add your
-##  code starting at that line
+### Delete the halt instruction and 
+### add the code that implements the heapsort
+### function as described by the C function
+### from the previous section.
+	
 	halt
 #
 # Array to sort
@@ -225,7 +228,7 @@ heap:	.quad 4
 size:   .quad 13
 	
 #
-# Stack (32 thirty-two bit words is more than enough here).
+# Stack (32 64 bit words is more than enough here).
 #
 .pos 0x3000
 top:	            .quad 0x00000000,0x20     # top of stack.
