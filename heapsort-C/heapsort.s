@@ -24,7 +24,7 @@ heapsort:
 	movl	%eax, heap(,%rdx,4)
 	jne	.L7
 .L1:
-	popq	%rbx
+	popq	%rbx		# pop the top element from the stack to register rbx
 	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
