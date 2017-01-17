@@ -26,7 +26,7 @@ heapsort:
 .L1:
 	popq	%rbx		# pop the top element from the stack to register rbx
 	.cfi_def_cfa_offset 8
-	ret
+	ret		# return the heapsort function to the caller
 	.cfi_endproc
 .LFE11:
 	.size	heapsort, .-heapsort
