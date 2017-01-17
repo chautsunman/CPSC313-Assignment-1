@@ -21,7 +21,7 @@ heapsort:
 	movslq	%ebx, %rdx		# move (copy) the value of register ebx (low 32-bit of register rbx) to register rdx, sign-extending from 4 bytes to 8 bytes
 	subl	$1, %ebx		# substitute 1 from register ebx and store the result back to ebx
 	cmpl	$-1, %ebx		# compare -1 and the value in register ebx (i) by computing value in ebx - -1 and setting the sign flag and zero flag (condition codes) for branching
-	movl	%eax, heap(,%rdx,4)
+	movl	%eax, heap(,%rdx,4)		# move (copy) the value in register eax which is the result from function call extract_max to the memory location heap as base + index in register rdx (i) * 4 (size of int) (heap[i])
 	jne	.L7
 .L1:
 	popq	%rbx		# pop the top element from the stack to register rbx
