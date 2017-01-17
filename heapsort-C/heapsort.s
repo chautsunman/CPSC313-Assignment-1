@@ -20,7 +20,7 @@ heapsort:
 	call	extract_max		# call function extract_max, argument last is in register rdi/edi according to cdecl calling convention, and it is also saved according to cdecl calling convention
 	movslq	%ebx, %rdx		# move (copy) the value of register ebx (low 32-bit of register rbx) to register rdx, sign-extending from 4 bytes to 8 bytes
 	subl	$1, %ebx		# substitute 1 from register ebx and store the result back to ebx
-	cmpl	$-1, %ebx
+	cmpl	$-1, %ebx		# compare -1 and the value in register ebx (i) by computing value in ebx - -1 and setting the sign flag and zero flag (condition codes) for branching
 	movl	%eax, heap(,%rdx,4)
 	jne	.L7
 .L1:
