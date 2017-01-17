@@ -18,7 +18,7 @@ heapsort:
 .L7:
 	movl	%ebx, %edi		# move (copy) the value of register ebx (low 32-bit of register rbx) to register edi (low 32-bit of register rdi) as argument
 	call	extract_max		# call function extract_max, argument last is in register rdi/edi according to cdecl calling convention, and it is also saved according to cdecl calling convention
-	movslq	%ebx, %rdx
+	movslq	%ebx, %rdx		# move (copy) the value of register ebx (low 32-bit of register rbx) to register rdx, sign-extending from 4 bytes to 8 bytes
 	subl	$1, %ebx
 	cmpl	$-1, %ebx
 	movl	%eax, heap(,%rdx,4)
