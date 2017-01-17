@@ -11,7 +11,7 @@ heapsort:
 	.cfi_offset 3, -16
 	movl	%edi, %ebx		# move (copy) the value of register edi (low 32-bit of register rdi) to register ebx (low 32-bit of register rbx) as local variable
 	call	heapify_array		# call function heapify_array, argument last is in register rdi/edi, and it is also saved in the last instruction according to cdecl calling convention
-	testl	%ebx, %ebx
+	testl	%ebx, %ebx		# test register ebx (last) (last < 0?) by setting the sign flag and zero flag for branching
 	js	.L1
 	.p2align 4,,10
 	.p2align 3
