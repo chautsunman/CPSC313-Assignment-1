@@ -6,7 +6,7 @@
 heapsort:
 .LFB11:
 	.cfi_startproc
-	pushq	%rbx
+	pushq	%rbx		# push register rbx onto the stack
 	.cfi_def_cfa_offset 16
 	.cfi_offset 3, -16
 	movl	%edi, %ebx
