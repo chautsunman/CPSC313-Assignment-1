@@ -9,7 +9,7 @@ heapsort:
 	pushq	%rbx		# push register rbx onto the stack
 	.cfi_def_cfa_offset 16
 	.cfi_offset 3, -16
-	movl	%edi, %ebx
+	movl	%edi, %ebx		# move (copy) the value of register edi (low 32-bit of register rdi) to register ebx (low 32-bit of register rbx) as local variable
 	call	heapify_array
 	testl	%ebx, %ebx
 	js	.L1
