@@ -16,7 +16,7 @@ heapsort:
 	.p2align 4,,10
 	.p2align 3
 .L7:
-	movl	%ebx, %edi
+	movl	%ebx, %edi		# move (copy) the value of register ebx (low 32-bit of register rbx) to register edi (low 32-bit of register rdi) as argument
 	call	extract_max
 	movslq	%ebx, %rdx
 	subl	$1, %ebx
