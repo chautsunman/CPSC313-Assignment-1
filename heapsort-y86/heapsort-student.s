@@ -216,6 +216,10 @@ heapsort:
 	subq %rdx, %rbx		# test register rbx (i < 0?)
 	jl	heapsort_return		# jump to heapsort_return (return) if i < 0
 
+heapsort_extract_max_loop:
+	rrmovq %rbx, %rdi		# R[%rdi] = i (R[%rbx]) as argument last for extract_max function call
+	call extract_max		# call function extract_max
+
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
 	ret		# return the heapsort function to the caller
