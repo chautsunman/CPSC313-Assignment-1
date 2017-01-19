@@ -207,6 +207,10 @@ heapsort:
 ### from the previous section.
 	pushq %rbx		# push register rbx onto the stack (callee saved)
 
+	# argument last is passed through %rdi
+	rrmovq %rdi, %rbx		# copy argument last to register rbx (R[%rbx] = R[%rdi] = last) (caller saved for heapify_array function call)
+	call heapify_array		# call function heapify_array (argument last is still in register rdi)
+
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
 	ret		# return the heapsort function to the caller
