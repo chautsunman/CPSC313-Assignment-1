@@ -205,7 +205,7 @@ heapsort:
 ### add the code that implements the heapsort
 ### function as described by the C function
 ### from the previous section.
-
+	ret		# return the heapsort function to the caller
 	# halt
 #
 # Array to sort
