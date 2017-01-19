@@ -227,6 +227,9 @@ heapsort_extract_max_loop:
 	addq %rcx, %rdx		# calculate the address for the i-th element of the heap (R[%rdx] = heap_base_address (R[%rdx]) + element_offset (R[%rcx]))
 	rmmovq %rax, 0(%rdx)		# heap[i] = max_element
 
+	irmovq $1, %rdx		# R[%rdx] = 1
+	subq %rdx, %rbx		# i-- (R[%rbx] = i (R[%rbx]) - 1 (R[%rdx]))
+
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
 	ret		# return the heapsort function to the caller
