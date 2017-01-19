@@ -211,6 +211,11 @@ heapsort:
 	rrmovq %rdi, %rbx		# copy argument last to register rbx (R[%rbx] = R[%rdi] = last) (caller saved for heapify_array function call)
 	call heapify_array		# call function heapify_array (argument last is still in register rdi)
 
+	# use the argument last (R[%rbx]) as the interating index i
+	irmovq $0, %rdx		# R[%rdx] = 0
+	subq %rdx, %rbx		# test register rbx (i < 0?)
+	jl	heapsort_return		# jump to heapsort_return (return) if i < 0
+
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
 	ret		# return the heapsort function to the caller
