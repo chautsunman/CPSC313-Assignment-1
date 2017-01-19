@@ -205,6 +205,10 @@ heapsort:
 ### add the code that implements the heapsort
 ### function as described by the C function
 ### from the previous section.
+	pushq %rbx		# push register rbx onto the stack (callee saved)
+
+heapsort_return:
+	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
 	ret		# return the heapsort function to the caller
 	# halt
 #
