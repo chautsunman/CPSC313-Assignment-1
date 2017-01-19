@@ -214,7 +214,7 @@ heapsort:
 	# use the argument last (R[%rbx]) as the interating index i
 	irmovq $0, %rdx		# R[%rdx] = 0
 	subq %rdx, %rbx		# test register rbx (i < 0?)
-	jl	heapsort_return		# jump to heapsort_return (return) if i < 0
+	jl heapsort_return		# jump to heapsort_return (return) if i < 0
 
 heapsort_extract_max_loop:
 	rrmovq %rbx, %rdi		# R[%rdi] = i (R[%rbx]) as argument last for extract_max function call
@@ -229,6 +229,10 @@ heapsort_extract_max_loop:
 
 	irmovq $1, %rdx		# R[%rdx] = 1
 	subq %rdx, %rbx		# i-- (R[%rbx] = i (R[%rbx]) - 1 (R[%rdx]))
+
+	irmovq $0, %rdx		# R[%rdx] = 0
+	subq %rdx, %rbx		# test register rbx (i < 0?)
+	jge	heapsort_extract_max_loop		# jump to heapsort_extract_max_loop if i >= 0
 
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
