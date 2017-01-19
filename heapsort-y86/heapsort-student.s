@@ -219,6 +219,13 @@ heapsort:
 heapsort_extract_max_loop:
 	rrmovq %rbx, %rdi		# R[%rdi] = i (R[%rbx]) as argument last for extract_max function call
 	call extract_max		# call function extract_max
+	# R[%rax] = max element extracted
+
+	irmovq heap, %rdx		# R[%rdx] = address of the heap
+	irmovq $8, %rcx		# R[%rcx] = 8
+	mulq %rbx, %rcx		# calculate the offset for the i-th element of the heap (R[%rcx] = 8 (R[%rcx]) * i (R[%rbx]))
+	addq %rcx, %rdx		# calculate the address for the i-th element of the heap (R[%rdx] = heap_base_address (R[%rdx]) + element_offset (R[%rcx]))
+	rmmovq %rax, 0(%rdx)		# heap[i] = max_element
 
 heapsort_return:
 	popq %rbx		# restore the value of register rbx (callee saved) (pop the top element from the stack to register rbx)
