@@ -14,7 +14,7 @@ main:	irmovq bottom,  %rsp     # initialize stack
 	mrmovq size(%rdi), %rdi  # %rdi = size
 	irmovq $1, %rsi
 	subq   %rsi, %rdi        # %rdi = size - 1
-	
+
 	call   heapsort
 	halt
 
@@ -29,7 +29,7 @@ swap:	addq   %rdi, %rdi	# Offset is 8 times the index
 	addq   %rsi, %rsi	# Offset is 8 times the index
 	addq   %rsi, %rsi
 	addq   %rsi, %rsi
-	
+
 	mrmovq heap(%rdi), %rcx # tmp = heap[index1]
 	mrmovq heap(%rsi), %rdx # heap[index1] = heap[index2]
 	rmmovq %rdx, heap(%rdi)
@@ -105,7 +105,7 @@ heapify_loop:
 
 	rrmovq %rbx, %rdi       # right_child = 2 * index + 2
 	addq   %rdi, %rdi
-	irmovq $2,   %r8	
+	irmovq $2,   %r8
 	addq   %r8,  %rdi
 	rrmovq %r12, %rsi
 	rrmovq %r13, %rdx
@@ -131,8 +131,8 @@ heapify_finish:
 	popq   %r12
 	popq   %rbx
 	ret
-	
-	
+
+
 # Heapify_array
 #     %rdi: last
 #
@@ -146,17 +146,17 @@ heapify_array:
 	irmovq $2, %rsi		# %rdi = (last - 1)/2
 	divq   %rsi, %rdi
 	rrmovq %rdi, %rbx       # i = %rdi
-	
+
 ha_loop:
 	andq   %rbx, %rbx       # check if i < 0
 	jl     ha_finish
 
-	rrmovq %rbx, %rdi       # Set %rdi = i, %rsi = last      
+	rrmovq %rbx, %rdi       # Set %rdi = i, %rsi = last
 	rrmovq %r12, %rsi
 	pushq  %rdi
 	call   heapify_node     # Heapify the node
         popq   %rdi
-	
+
 	irmovq $1, %rdi         # i--
 	subq   %rdi, %rbx
 	jmp    ha_loop
@@ -165,7 +165,7 @@ ha_finish:
 	popq   %rbx
 	popq   %r12
 	ret
-	
+
 #
 # Extract_max
 #     %rdi: last
@@ -180,7 +180,7 @@ extract_max:
 	addq   %rdx, %rdx       # %rcx = heap[last]
 	addq   %rdx, %rdx
 	addq   %rdx, %rdx
-	mrmovq heap(%rdx), %rcx 
+	mrmovq heap(%rdx), %rcx
 	rmmovq %rcx, heap(%rsi) # heap[0] = %rcx
 
 	rrmovq %rdi, %rsi	# %rsi = last - 1
@@ -201,12 +201,12 @@ heapsort:
 
 ###
 ### THIS PART TO BE COMPLETED BY THE STUDENT.
-### Delete the halt instruction and 
+### Delete the halt instruction and
 ### add the code that implements the heapsort
 ### function as described by the C function
 ### from the previous section.
-	
-	halt
+
+	# halt
 #
 # Array to sort
 #
@@ -226,7 +226,7 @@ heap:	.quad 4
 	.quad 9
 
 size:   .quad 13
-	
+
 #
 # Stack (32 64 bit words is more than enough here).
 #
